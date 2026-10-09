@@ -1,0 +1,47 @@
+# Data
+data/raw/
+data/interim/
+data/processed/
+*.csv
+*.xlsx
+*.parquet
+
+# Models
+ml/artifacts/models/
+*.pkl
+*.h5
+*.joblib
+
+# Environment
+.env
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Database
+database/backups/
+*.sqlite
+*.db
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
