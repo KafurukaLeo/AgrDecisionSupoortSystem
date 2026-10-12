@@ -1,0 +1,375 @@
+
+##############################################################################
+# Season A
+##############################################################################
+
+==============================================================================
+File: Season A / production
+Path: data\raw\sas_2025\season_a\Rwa_raw_SeasonA2025_Production.csv
+==============================================================================
+Shape: (34369, 101)
+
+Columns (101):
+  Segment_ID                     int64      non-null: 34369
+  s1q1                           object     non-null: 34369
+  s1q2                           object     non-null: 34369
+  s1q3                           object     non-null: 34369
+  s1q4                           int64      non-null: 34369
+  s1q6                           int64      non-null: 34369
+  s1q7                           object     non-null: 34369
+  s1q8                           object     non-null: 33588
+  s1q9                           float64    non-null: 33582
+  s1q14                          object     non-null: 34366
+  s1q16                          object     non-null: 9357
+  s2q1                           int64      non-null: 34369
+  s2q2                           float64    non-null: 34369
+  s2q3                           int64      non-null: 34369
+  s2q4                           object     non-null: 34369
+  CropCategory                   object     non-null: 34369
+  s2q4_o                         object     non-null: 76
+  s2q5                           float64    non-null: 11879
+  s2q6                           float64    non-null: 8766
+  s2q7                           object     non-null: 34369
+  s2q8                           object     non-null: 34369
+  s2q9                           object     non-null: 34369
+  s2q10                          object     non-null: 6301
+  s2q10_Other                    object     non-null: 91
+  s2q11                          object     non-null: 34369
+  s2q12                          object     non-null: 34369
+  s2q13_1                        object     non-null: 19813
+  s2q13_2                        float64    non-null: 17327
+  s2q14                          float64    non-null: 17321
+  s2q15_a                        float64    non-null: 9204
+  s2q15_b                        float64    non-null: 10637
+  s2q16_1                        object     non-null: 5720
+  s2q16_2                        float64    non-null: 5582
+  s2q17                          float64    non-null: 5576
+  s2q18_a                        float64    non-null: 5474
+  s2q18_b                        float64    non-null: 204
+  s2q19_1                        object     non-null: 29923
+  s2q19_2                        float64    non-null: 29940
+  s2q19_3                        float64    non-null: 29941
+  s2q20_1                        float64    non-null: 29941
+  s2q20_2                        float64    non-null: 29941
+  s2q21                          float64    non-null: 29941
+  s2q22                          float64    non-null: 29941
+  s2q23                          object     non-null: 29838
+  s2q24_e1                       object     non-null: 25149
+  s2q24_e2                       object     non-null: 8121
+  s2q24_e3                       object     non-null: 1709
+  s2q24_d                        object     non-null: 2153
+  s2q25                          float64    non-null: 29941
+  s2q25_food                     float64    non-null: 29941
+  s2q25_drink                    float64    non-null: 29941
+  s2q25_other                    float64    non-null: 29941
+  s2q26                          float64    non-null: 29941
+  s2q27                          object     non-null: 20473
+  s2q27_Other_place              object     non-null: 27
+  s2q28                          float64    non-null: 29941
+  s2q29                          float64    non-null: 29941
+  s2q30                          float64    non-null: 29941
+  s2q31                          float64    non-null: 29941
+  s2q32                          float64    non-null: 29941
+  s2q33                          float64    non-null: 29941
+  s2q34                          float64    non-null: 29941
+  s2q35                          float64    non-null: 29941
+  s2q36                          float64    non-null: 29941
+  s2q37                          object     non-null: 1633
+  s2q37_Other_storage            object     non-null: 12
+  s2q37_public                   float64    non-null: 29941
+  s2q38                          float64    non-null: 29941
+  s2q41                          float64    non-null: 29941
+  s2q42                          float64    non-null: 29941
+  s2q43                          float64    non-null: 29941
+  s2q44                          float64    non-null: 29941
+  s2q45                          float64    non-null: 29941
+  s2q46                          float64    non-null: 29941
+  s2q47                          float64    non-null: 29941
+  s2q48                          float64    non-null: 29941
+  s2q49                          float64    non-null: 29941
+  s2q50                          float64    non-null: 29941
+  s3q1                           object     non-null: 34367
+  s3q3                           object     non-null: 30411
+  s3q7                           object     non-null: 34367
+  s3q9                           object     non-null: 20965
+  s3q16                          object     non-null: 34367
+  s3q17                          object     non-null: 678
+  s3q18                          object     non-null: 34367
+  s3q19                          object     non-null: 13469
+  s4q1                           object     non-null: 34367
+  s4q2                           object     non-null: 34367
+  s4q3                           object     non-null: 30925
+  s4q4                           object     non-null: 26433
+  s4q6                           object     non-null: 34367
+  s4q8                           object     non-null: 34366
+  s4q9                           object     non-null: 495
+  s4q13                          object     non-null: 34366
+  s4q14                          object     non-null: 4632
+  Plot_area_ha                   float64    non-null: 34369
+  Harvest_ratio                  float64    non-null: 29938
+  Crop_Area_ha                   float64    non-null: 34369
+  Harvested_Crop_Area_ha         float64    non-null: 29938
+  Yield                          float64    non-null: 29938
+  plot_weight                    float64    non-null: 34369
+
+First 3 rows (first 12 cols):
+   Segment_ID    s1q1    s1q2 s1q3  s1q4  s1q6                              s1q7  s1q8  s1q9 s1q14  s1q16  s2q1
+0       12001  Kigali  Gasabo  LSF     1     1  Large scale farmer as individual  Male  64.0    No  Other     1
+1       12001  Kigali  Gasabo  LSF     1     1  Large scale farmer as individual  Male  64.0    No  Other     2
+2       12001  Kigali  Gasabo  LSF     1     1  Large scale farmer as individual  Male  64.0    No  Other     3
+
+==============================================================================
+File: Season A / practices
+Path: data\raw\sas_2025\season_a\Rwa_raw_SeasonA2025_Agricultural_practice.csv
+==============================================================================
+Shape: (17062, 59)
+
+Columns (59):
+  Segment_ID                     int64      non-null: 17062
+  s2q1                           int64      non-null: 17062
+  s1q1                           object     non-null: 17062
+  s1q2                           object     non-null: 17062
+  s1q3                           object     non-null: 17062
+  s1q6                           int64      non-null: 17062
+  s1q7                           object     non-null: 17062
+  s2q2_ha                        float64    non-null: 17062
+  s4q1                           object     non-null: 17062
+  s4q2                           object     non-null: 17062
+  s4q3                           object     non-null: 15442
+  s4q4                           object     non-null: 13172
+  s4q5_a                         float64    non-null: 1198
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\Projects\AgrDecisionSupoortSystem\ml\src\data\inspect.py", line 113, in <module>
+    main()
+  File "D:\Projects\AgrDecisionSupoortSystem\ml\src\data\inspect.py", line 85, in main
+    df = inspect_file(full_path, f"{season} / {label}")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\AgrDecisionSupoortSystem\ml\src\data\inspect.py", line 47, in inspect_file
+    print(f"\u26a0\ufe0f  FILE NOT FOUND\n")
+  File "C:\Users\fidel\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 0-1: character maps to <undefined>
+  s4q5_b                         float64    non-null: 1186
+  plot_weight                    float64    non-null: 17062
+  s4q6                           object     non-null: 17062
+  s4q7                           float64    non-null: 688
+  s4q7_1                         object     non-null: 688
+  s4q7_2                         object     non-null: 306
+  s4q7_3                         object     non-null: 199
+  s4q7_4                         object     non-null: 130
+  s4q7_Other1                    object     non-null: 44
+  s4q7_Other2                    object     non-null: 10
+  s4q7_Other3                    object     non-null: 4
+  s4q8                           object     non-null: 17062
+  s4q9                           object     non-null: 328
+  s4q10_1                        object     non-null: 177
+  s4q10_2                        object     non-null: 8
+  s4q10_2_1                      object     non-null: 8
+  s4q10_3                        float64    non-null: 8
+  s4q11_1                        object     non-null: 176
+  s4q11_2                        object     non-null: 164
+  s4q11_2_1                      object     non-null: 164
+  s4q11_2_2                      object     non-null: 77
+  s4q11_2_3                      object     non-null: 30
+  s4q11_2_4                      object     non-null: 7
+  s4q11_2_5                      object     non-null: 3
+  s4q11_Other1                   object     non-null: 4
+  s4q11_3                        float64    non-null: 162
+  s4q12_1                        object     non-null: 175
+  s4q12_2                        object     non-null: 8
+  s4q12_3                        object     non-null: 8
+  s4q12_4                        float64    non-null: 21
+  s4q13                          object     non-null: 17062
+  s4q14                          object     non-null: 2507
+  s4q15                          object     non-null: 843
+  s4q16                          object     non-null: 839
+  s4q16_1                        object     non-null: 838
+  s4q16_2                        object     non-null: 49
+  s4q16_3                        object     non-null: 9
+  s4q16_Other                    float64    non-null: 0
+  s4q17                          float64    non-null: 838
+  s4q17_1                        object     non-null: 838
+  s4q17_2                        object     non-null: 132
+  s4q17_3                        object     non-null: 24
+  s4q17_4                        object     non-null: 4
+  s4q17_5                        object     non-null: 2
+  s4q17_Other                    object     non-null: 3
+  s4q18                          float64    non-null: 837
+
+First 3 rows (first 12 cols):
+   Segment_ID  s2q1    s1q1    s1q2 s1q3  s1q6                              s1q7    s2q2_ha                s4q1 s4q2 s4q3 s4q4
+0       12001     1  Kigali  Gasabo  LSF     1  Large scale farmer as individual  27.844120  Low (Wind erosion)  Yes  Yes  Yes
+1       12001     2  Kigali  Gasabo  LSF     1  Large scale farmer as individual   8.043123  Low (Wind erosion)  Yes  Yes   No
+2       12001     3  Kigali  Gasabo  LSF     1  Large scale farmer as individual  10.944560  Low (Wind erosion)  Yes  Yes   No
+
+==============================================================================
+File: Season A / screening
+Path: data\raw\sas_2025\season_a\Rwa_raw_SeasonA2025_Screening.csv
+==============================================================================
+Shape: (52569, 51)
+
+Columns (51):
+  Segment_ID                     int64      non-null: 52569
+  s1q1                           object     non-null: 52569
+  s1q2                           object     non-null: 52569
+  s1q3                           object     non-null: 52569
+  s1q4                           int64      non-null: 52569
+  s1q5_2                         float64    non-null: 45115
+  s1q5_3                         object     non-null: 52569
+  s1q8                           float64    non-null: 45766
+  s2q1                           int64      non-null: 52569
+  s2q2                           int64      non-null: 52569
+  s2q3                           int64      non-null: 52569
+  s2q4                           object     non-null: 52569
+  s2q5_bloc                      float64    non-null: 52569
+  s2q5                           float64    non-null: 52569
+  s2q7                           object     non-null: 52569
+  s2q8                           object     non-null: 5402
+  s2q8_Other                     object     non-null: 90
+  s2q9                           object     non-null: 47167
+  s2q10_1                        object     non-null: 36405
+  s2q10_Other1                   object     non-null: 41
+  s2q10_2                        object     non-null: 13510
+  s2q10_Other2                   object     non-null: 20
+  s2q10_3                        object     non-null: 1895
+  s2q10_Other3                   object     non-null: 2
+  s2q11                          object     non-null: 47400
+  s2q12_1                        object     non-null: 21131
+  s2q12_other1                   object     non-null: 270
+  s2q12_2                        object     non-null: 6271
+  s2q12_other2                   object     non-null: 157
+  s2q12_3                        object     non-null: 1422
+  s2q12_other3                   object     non-null: 55
+  s2q12_4                        object     non-null: 296
+  s2q12_other4                   object     non-null: 8
+  s2q13                          object     non-null: 51566
+  s2q14                          object     non-null: 43945
+  s2q15                          object     non-null: 44616
+  s2q16                          float64    non-null: 44622
+  s3q1                           object     non-null: 44627
+  s3q1_o                         object     non-null: 257
+  CropCategory                   object     non-null: 44627
+  s3q2_1                         float64    non-null: 44627
+  s3q2_2                         object     non-null: 44627
+  s3q3_1                         float64    non-null: 44622
+  s3q3_2                         object     non-null: 44622
+  s3q4                           float64    non-null: 15266
+  s3q5                           object     non-null: 44559
+  s3q6                           object     non-null: 44559
+  s3q7                           object     non-null: 44558
+  plot_weight                    float64    non-null: 52569
+  Plot_size_ha                   float64    non-null: 52569
+  crop_area                      float64    non-null: 44627
+
+First 3 rows (first 12 cols):
+   Segment_ID    s1q1    s1q2                    s1q3  s1q4  s1q5_2                   s1q5_3  s1q8  s2q1  s2q2  s2q3 s2q4
+0       12001  Kigali  Gasabo  Large Scale Farmer/LSF     1     NaN  Individual large farmer   NaN    63     1    99    .
+1       12001  Kigali  Gasabo  Large Scale Farmer/LSF     1     NaN  Individual large farmer   NaN     1     2    99    .
+2       12001  Kigali  Gasabo  Large Scale Farmer/LSF     1     NaN  Individual large farmer   NaN    62     3    99    .
+
+==============================================================================
+File: Season A / fertilizer
+Path: data\raw\sas_2025\season_a\Rwa_raw_fertilizer_pesticideA2025.csv
+==============================================================================
+Shape: (17062, 80)
+
+Columns (80):
+  Segment_ID                     int64      non-null: 17062
+  s2q1                           int64      non-null: 17062
+  s1q1                           object     non-null: 17062
+  s1q2                           object     non-null: 17062
+  s1q3                           object     non-null: 17062
+  s1q6                           int64      non-null: 17062
+  s1q7                           object     non-null: 17062
+  s1q14                          object     non-null: 17062
+  s2q2                           float64    non-null: 17062
+  s3q1                           object     non-null: 17062
+  s3q2a_1                        object     non-null: 14945
+  s3q2a_2                        object     non-null: 1325
+  s3q2a_3                        object     non-null: 15
+  s3q2a_4                        float64    non-null: 0
+  s3q2a_Other1                   object     non-null: 4
+  s3q2b                          object     non-null: 14945
+  s3q3                           object     non-null: 14945
+  s3q4_a                         float64    non-null: 2660
+  s3q4_b                         float64    non-null: 8625
+  s3q5                           object     non-null: 11398
+  s3q6_1                         object     non-null: 5118
+  s3q6_2                         object     non-null: 2361
+  s3q6_o                         object     non-null: 71
+  s3q7                           object     non-null: 17060
+  s3q8                           object     non-null: 10726
+  s3q8_o                         object     non-null: 18
+  s3q9                           object     non-null: 10728
+  s3q16                          object     non-null: 17060
+  s3q17                          object     non-null: 406
+  s3q101                         object     non-null: 6673
+  s3q111                         object     non-null: 6673
+  s3q121                         float64    non-null: 6673
+  s3q131                         float64    non-null: 6673
+  s3q141                         float64    non-null: 6560
+  s3q151                         object     non-null: 6673
+  s3q102                         object     non-null: 3866
+  s3q112                         object     non-null: 3866
+  s3q122                         float64    non-null: 3866
+  s3q132                         float64    non-null: 3866
+  s3q142                         float64    non-null: 3836
+  s3q152                         object     non-null: 3866
+  s3q103                         object     non-null: 317
+  s3q113                         object     non-null: 317
+  s3q123                         float64    non-null: 317
+  s3q133                         float64    non-null: 317
+  s3q143                         float64    non-null: 311
+  s3q153                         object     non-null: 317
+  s3q104                         object     non-null: 18
+  s3q114                         object     non-null: 18
+  s3q124                         float64    non-null: 18
+  s3q134                         float64    non-null: 18
+  s3q144                         float64    non-null: 17
+  s3q154                         object     non-null: 18
+  s3q18                          object     non-null: 17060
+  s3q19                          object     non-null: 7248
+  s3q201                         object     non-null: 4055
+  s3q211                         object     non-null: 4055
+  s3q221                         float64    non-null: 4055
+  s3q231                         float64    non-null: 4055
+  s3q241                         float64    non-null: 3975
+  s3q24_b_1                      float64    non-null: 75
+  s3q202                         object     non-null: 1320
+  s3q212                         object     non-null: 1320
+  s3q222                         float64    non-null: 1320
+  s3q232                         float64    non-null: 1320
+  s3q242                         float64    non-null: 1313
+  s3q24_b_2                      float64    non-null: 4
+  s3q203                         object     non-null: 508
+  s3q213                         object     non-null: 508
+  s3q223                         float64    non-null: 508
+  s3q233                         float64    non-null: 508
+  s3q243                         float64    non-null: 507
+  s3q24_b_3                      float64    non-null: 1
+  s3q204                         object     non-null: 188
+  s3q214                         object     non-null: 188
+  s3q224                         float64    non-null: 188
+  s3q234                         float64    non-null: 188
+  s3q244                         float64    non-null: 188
+  s3q24_b_4                      float64    non-null: 0
+  plot_weight                    float64    non-null: 17062
+
+First 3 rows (first 12 cols):
+   Segment_ID  s2q1    s1q1    s1q2 s1q3  s1q6                              s1q7 s1q14         s2q2 s3q1          s3q2a_1 s3q2a_2
+0       12001     1  Kigali  Gasabo  LSF     1  Large scale farmer as individual    No  278441.2188  Yes  Own preparation     NaN
+1       12001     2  Kigali  Gasabo  LSF     1  Large scale farmer as individual    No   80431.2344  Yes  Own preparation     NaN
+2       12001     3  Kigali  Gasabo  LSF     1  Large scale farmer as individual    No  109445.6250  Yes  Own preparation     NaN
+
+
+##############################################################################
+# Season B
+##############################################################################
+
+==============================================================================
+File: Season B / production
+Path: data\raw\sas_2025\season_b\Rwa_raw_SeasonB2025_Production.csv
+==============================================================================

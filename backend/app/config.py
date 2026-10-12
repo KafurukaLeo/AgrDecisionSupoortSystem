@@ -19,6 +19,11 @@ class Settings(BaseSettings):
 
     # Database
     DATABASE_URL: str = "postgresql://postgres:password@localhost:5432/agri_db"
+    DATABASE_HOST: str = "localhost"
+    DATABASE_PORT: int = 5432
+    DATABASE_NAME: str = "agri_db"
+    DATABASE_USER: str = "postgres"
+    DATABASE_PASSWORD: str = "password"
 
     # ML
     MODEL_PATH: str = "ml/artifacts/models/random_forest_v1.pkl"
@@ -28,6 +33,7 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = True
+        extra = "ignore"
 
 
 @lru_cache()
