@@ -1,0 +1,22 @@
+[
+  "crop_encoded",
+  "crop_category_encoded",
+  "province_encoded",
+  "district_encoded",
+  "stratum_encoded",
+  "season_encoded",
+  "farmer_gender_encoded",
+  "land_use_encoded",
+  "cropping_system_encoded",
+  "irrigation_used",
+  "pesticide_used",
+  "anti_erosion_activity",
+  "organic_fertilizer_used",
+  "inorganic_fertilizer_used",
+  "irrigation_practiced",
+  "plot_irrigated",
+  "plot_area_ha",
+  "crop_area_ha",
+  "harvest_ratio",
+  "farmer_age"
+]
