@@ -2,9 +2,12 @@ import streamlit as st
 from frontend.services.api_client import api_client
 
 st.title("🔮 Prediction Tool")
-st.caption("Predict agricultural productivity for a specific scenario.")
+st.caption(
+    "Predict agricultural productivity for a specific scenario. "
+    "Powered by a Random Forest model trained on NISR SAS 2025 data."
+)
 
-# Load filter options
+# Load filter options from the API
 try:
     options = api_client.get_filter_options()
 except Exception as e:
@@ -12,37 +15,91 @@ except Exception as e:
     st.stop()
 
 with st.form("prediction_form"):
-    col1, col2 = st.columns(2)
+    st.subheader("Scenario")
+
+    col1, col2, col3 = st.columns(3)
     with col1:
         crop = st.selectbox("Crop", options["crops"])
         season = st.selectbox("Season", options["seasons"])
-        district = st.selectbox("District", options["districts"])
+        province = st.selectbox("Province", options["provinces"])
     with col2:
-        year = st.selectbox("Year", options["years"])
-        cultivated_area = st.number_input("Cultivated Area (ha)", min_value=0.1, value=2.0)
-    col3, col4 = st.columns(2)
+        district = st.selectbox("District", options["districts"])
+        stratum = st.selectbox(
+            "Land type",
+            [
+                "Agricultural land on hillside",
+                "Agricultural land in marshland",
+                "Rangeland",
+                "Mixed",
+                "Large Scale Farmer",
+            ],
+        )
+        farmer_gender = st.selectbox("Farmer gender", ["Male", "Female"])
     with col3:
-        fertilizer = st.checkbox("Fertilizer Used")
-    with col4:
-        irrigation = st.checkbox("Irrigation Used")
+        plot_area_ha = st.number_input("Plot area (ha)", min_value=0.1, value=1.0)
+        crop_area_ha = st.number_input("Crop area (ha)", min_value=0.1, value=1.0)
+        farmer_age = st.number_input("Farmer age", min_value=15, max_value=100, value=40)
 
-    submitted = st.form_submit_button("Predict Productivity")
+    st.subheader("Inputs & Practices")
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        fertilizer = st.checkbox("Fertilizer used")
+        irrigation = st.checkbox("Irrigation used")
+    with c2:
+        pesticide = st.checkbox("Pesticide used")
+        improved_seeds = st.checkbox("Improved seeds")
+    with c3:
+        anti_erosion = st.checkbox("Anti-erosion")
+        organic_fert = st.checkbox("Organic fertilizer")
+    with c4:
+        inorganic_fert = st.checkbox("Inorganic fertilizer")
+        plot_irrigated = st.checkbox("Plot irrigated this season")
+
+    submitted = st.form_submit_button("Predict Productivity", type="primary")
 
 if submitted:
     payload = {
         "crop": crop,
+        "crop_category": "Cereal",
         "season": season,
+        "province": province,
         "district": district,
-        "year": year,
-        "fertilizer_used": fertilizer,
-        "irrigation_used": irrigation,
-        "cultivated_area": cultivated_area,
+        "stratum": stratum,
+        "farmer_gender": farmer_gender,
+        "land_use": "Agricultural land on hillside",
+        "cropping_system": "Pure Cropping",
+        "plot_area_ha": float(plot_area_ha),
+        "crop_area_ha": float(crop_area_ha),
+        "harvest_ratio": 100.0,
+        "farmer_age": int(farmer_age),
+        "fertilizer_used": bool(fertilizer),
+        "irrigation_used": bool(irrigation),
+        "pesticide_used": bool(pesticide),
+        "improved_seeds_used": bool(improved_seeds),
+        "anti_erosion_activity": bool(anti_erosion),
+        "organic_fertilizer_used": bool(organic_fert),
+        "inorganic_fertilizer_used": bool(inorganic_fert),
+        "irrigation_practiced": bool(irrigation),
+        "plot_irrigated": bool(plot_irrigated),
     }
-    try:
-        result = api_client.predict(payload)
-        st.success(f"Predicted Yield: **{result['predicted_yield']} {result['unit']}**")
-        st.write(f"Confidence Interval: {result['confidence_interval']}")
-        st.caption(f"Model version: {result['model_version']}")
-        st.warning(result["disclaimer"])
-    except Exception as e:
-        st.error(f"Prediction failed: {e}")
+
+    with st.spinner("Calculating prediction..."):
+        try:
+            result = api_client.predict(payload)
+
+            st.success("Prediction complete")
+            col1, col2 = st.columns(2)
+            with col1:
+                st.metric("Predicted Yield (kg/ha)", f"{result['predicted_yield']:,}")
+            with col2:
+                st.metric("Predicted Yield (t/ha)", f"{result['predicted_yield_t_ha']}")
+
+            st.info(
+                f"95% confidence range: "
+                f"{result['confidence_interval_t_ha'][0]} – "
+                f"{result['confidence_interval_t_ha'][1]} t/ha"
+            )
+            st.caption(f"Model: {result['model_version']}")
+            st.warning(result["disclaimer"])
+        except Exception as e:
+            st.error(f"Prediction failed: {e}")
