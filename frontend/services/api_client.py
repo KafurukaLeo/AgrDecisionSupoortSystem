@@ -43,5 +43,8 @@ class APIClient:
     def predict(self, payload: Dict) -> Dict:
         return self._post("/predict/", payload)
 
+    def get_prediction_status(self) -> Dict:
+        return self._get("/predict/status")
+
 
 api_client = APIClient()

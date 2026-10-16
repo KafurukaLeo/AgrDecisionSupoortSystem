@@ -14,6 +14,21 @@ except Exception as e:
     st.error(f"Could not load filter options: {e}")
     st.stop()
 
+# Check whether the trained model is available on the server
+try:
+    _status = api_client.get_prediction_status()
+    model_ready = bool(_status.get("model_loaded") and _status.get("encoders_loaded"))
+except Exception:
+    model_ready = False
+
+if not model_ready:
+    st.warning(
+        "The prediction model is not installed on the server yet. "
+        "You can fill in the form, but predictions will be unavailable until the "
+        "trained model files (model.pkl and label_encoders.pkl) are added to "
+        "backend/app/ml/artifacts/."
+    )
+
 with st.form("prediction_form"):
     st.subheader("Scenario")
 
@@ -55,7 +70,9 @@ with st.form("prediction_form"):
         inorganic_fert = st.checkbox("Inorganic fertilizer")
         plot_irrigated = st.checkbox("Plot irrigated this season")
 
-    submitted = st.form_submit_button("Predict Productivity", type="primary")
+    submitted = st.form_submit_button(
+        "Predict Productivity", type="primary", disabled=not model_ready
+    )
 
 if submitted:
     payload = {
