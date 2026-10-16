@@ -270,7 +270,7 @@ def main():
             df.to_parquet(out_path, index=False)
             print(f"    → Saved: {out_path}")
         except Exception as e:
-            print(f"    ✗ Error cleaning {label}: {e}")
+            print(f"    ERROR cleaning {label}: {e}")
         print()
 
     print("=" * 60)

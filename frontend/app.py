@@ -1,6 +1,13 @@
 """
 Main Streamlit entry point.
 """
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 import streamlit as st
 from frontend.config.settings import APP_TITLE, APP_ICON
 from frontend.services.api_client import api_client

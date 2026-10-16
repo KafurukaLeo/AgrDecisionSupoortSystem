@@ -33,7 +33,7 @@ def load_season(suffix):
             data[key] = pd.read_parquet(path)
             print(f"  Loaded {key}_{suffix}: {data[key].shape}")
         else:
-            print(f"  ⚠ Missing: {path}")
+            print(f"  WARNING: Missing: {path}")
             data[key] = pd.DataFrame()
     return data
 
@@ -45,7 +45,7 @@ def integrate_season(season, suffix):
 
     prod = data["production"]
     if prod.empty:
-        print(f"  ✗ No production data — skipping Season {season}")
+        print(f"  ERROR: No production data — skipping Season {season}")
         return None
 
     prod = prod.copy()
@@ -127,7 +127,7 @@ def main():
         combined = pd.concat(all_seasons, ignore_index=True)
         out_path = PROCESSED_DIR / "sas_2025_integrated.parquet"
         combined.to_parquet(out_path, index=False)
-        print(f"\n✅ Saved integrated dataset: {out_path}")
+        print(f"\nSaved integrated dataset: {out_path}")
         print(f"   Total rows: {len(combined)}")
         print(f"   Total columns: {len(combined.columns)}")
         print(f"\n   Column names:")

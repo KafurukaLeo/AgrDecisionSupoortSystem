@@ -2,8 +2,11 @@
 Application configuration.
 Reads from environment variables (.env file).
 """
+from pathlib import Path
 from pydantic_settings import BaseSettings
 from functools import lru_cache
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 class Settings(BaseSettings):
@@ -31,7 +34,7 @@ class Settings(BaseSettings):
     ENCODER_PATH: str = "ml/artifacts/encoders/label_encoders.pkl"
 
     class Config:
-        env_file = ".env"
+        env_file = str(PROJECT_ROOT / ".env")
         case_sensitive = True
         extra = "ignore"
 

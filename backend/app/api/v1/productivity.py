@@ -1,6 +1,7 @@
 """
 Productivity endpoints (dummy data for now).
 """
+# pyrefly: ignore [missing-import]
 from fastapi import APIRouter
 
 router = APIRouter()

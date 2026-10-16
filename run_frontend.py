@@ -1,6 +1,6 @@
 """
 Launcher for the Streamlit frontend.
-Adds project root to sys.path so `frontend` package imports resolve.
+Adds project root to sys.path so frontend package imports resolve.
 """
 import sys
 from pathlib import Path

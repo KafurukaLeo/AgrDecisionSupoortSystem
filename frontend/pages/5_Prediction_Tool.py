@@ -1,7 +1,7 @@
 import streamlit as st
 from frontend.services.api_client import api_client
 
-st.title("🔮 Prediction Tool")
+st.title(":material/online_prediction: Prediction Tool")
 st.caption(
     "Predict agricultural productivity for a specific scenario. "
     "Powered by a Random Forest model trained on NISR SAS 2025 data."

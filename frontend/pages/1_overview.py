@@ -2,7 +2,7 @@ import streamlit as st
 from frontend.services.api_client import api_client
 from frontend.components.charts import bar_chart
 
-st.title("📊 Overview Dashboard")
+st.title(":material/dashboard: Overview Dashboard")
 
 try:
     summary = api_client.get_summary()

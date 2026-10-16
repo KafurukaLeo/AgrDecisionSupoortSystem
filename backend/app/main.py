@@ -1,6 +1,18 @@
 """
 FastAPI application entry point.
+
+Run either way:
+    uvicorn backend.app.main:app --port 8000 --reload   (from project root)
+    python main.py                                      (from backend/app)
 """
+import sys
+from pathlib import Path
+
+# Make `backend.app.*` importable when this file is run directly
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -38,3 +50,16 @@ def root():
         "status": "running",
         "docs": "/docs",
     }
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(
+        "backend.app.main:app",
+        host="127.0.0.1",
+        port=settings.BACKEND_PORT,
+        reload=settings.DEBUG,
+        app_dir=str(PROJECT_ROOT),
+        reload_dirs=[str(PROJECT_ROOT / "backend")],
+    )
