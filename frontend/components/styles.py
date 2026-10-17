@@ -1,13 +1,14 @@
 """
 Central UI Design System and Custom CSS Components.
-Elevates Streamlit into a state-of-the-art enterprise decision-support platform.
+Uses Google Material Symbols (clean vector icons) instead of emojis.
 """
 import streamlit as st
 
 
 def apply_custom_styles():
-    """Injects high-end CSS into the Streamlit app."""
+    """Injects high-end CSS and Material Symbols font into the Streamlit app."""
     css = """
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap');
 
@@ -18,6 +19,20 @@ def apply_custom_styles():
     h1, h2, h3, .brand-font {
         font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif !important;
         letter-spacing: -0.02em;
+    }
+
+    /* Google Material Symbols base */
+    .material-symbols-outlined {
+        font-family: 'Material Symbols Outlined' !important;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 22px;
+        line-height: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+        -webkit-font-smoothing: antialiased;
     }
 
     /* Top decoration bar */
@@ -67,8 +82,8 @@ def apply_custom_styles():
     .hero-badge {
         display: inline-flex;
         align-items: center;
-        gap: 0.4rem;
-        padding: 0.3rem 0.85rem;
+        gap: 0.45rem;
+        padding: 0.35rem 0.85rem;
         border-radius: 9999px;
         background: rgba(255, 255, 255, 0.16);
         backdrop-filter: blur(8px);
@@ -147,7 +162,6 @@ def apply_custom_styles():
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.1rem;
     }
 
     .kpi-value {
@@ -200,7 +214,7 @@ def apply_custom_styles():
         margin-bottom: 0.4rem;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.55rem;
     }
 
     .card-subtitle {
@@ -280,6 +294,9 @@ def apply_custom_styles():
         color: #ffffff !important;
         letter-spacing: -0.01em;
         margin: 0 0 0.25rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
     }
 
     .sidebar-brand-sub {
@@ -307,6 +324,9 @@ def apply_custom_styles():
         letter-spacing: 0.06em;
         color: #065f46;
         margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
     }
 
     .prediction-big-num {
@@ -351,13 +371,14 @@ def apply_custom_styles():
     st.markdown(css, unsafe_allow_html=True)
 
 
-def render_hero(title: str, subtitle: str, badge: str = "National Agricultural Intelligence • Rwanda"):
-    """Renders a premier hero header banner."""
+def render_hero(title: str, subtitle: str, badge: str = "National Agricultural Intelligence • Rwanda", icon_name: str = "agriculture"):
+    """Renders a premier hero header banner with vector icon."""
     st.markdown(
         f"""
         <div class="hero-banner">
             <div class="hero-badge">
-                <span style="font-size: 0.9rem;">🇷🇼</span> {badge}
+                <span class="material-symbols-outlined" style="font-size: 16px;">{icon_name}</span>
+                {badge}
             </div>
             <h1 class="hero-title">{title}</h1>
             <p class="hero-subtitle">{subtitle}</p>
@@ -367,8 +388,8 @@ def render_hero(title: str, subtitle: str, badge: str = "National Agricultural I
     )
 
 
-def render_kpi(title: str, value: str, unit: str = "", delta: str = None, icon: str = "📊", is_up: bool = True):
-    """Renders an enterprise KPI card."""
+def render_kpi(title: str, value: str, unit: str = "", delta: str = None, material_icon: str = "analytics", is_up: bool = True):
+    """Renders an enterprise KPI card with a real vector Material Symbol."""
     delta_html = ""
     if delta:
         trend_class = "trend-up" if is_up else "trend-neutral"
@@ -382,7 +403,9 @@ def render_kpi(title: str, value: str, unit: str = "", delta: str = None, icon: 
     <div class="kpi-card">
         <div class="kpi-header">
             <p class="kpi-title">{title}</p>
-            <div class="kpi-icon-wrap">{icon}</div>
+            <div class="kpi-icon-wrap">
+                <span class="material-symbols-outlined">{material_icon}</span>
+            </div>
         </div>
         <div class="kpi-value">{value}<span class="kpi-unit">{unit}</span></div>
         {delta_html}
@@ -398,7 +421,10 @@ def render_sidebar_header(api_online: bool = True):
     st.sidebar.markdown(
         f"""
         <div class="sidebar-brand-box">
-            <p class="sidebar-brand-title">AgriSupport Rwanda</p>
+            <p class="sidebar-brand-title">
+                <span class="material-symbols-outlined" style="font-size: 24px; color: #10b981;">agriculture</span>
+                AgriSupport Rwanda
+            </p>
             <p class="sidebar-brand-sub">Decision Support System</p>
             <div style="margin-top: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
                 <span class="status-pill {status_class}">

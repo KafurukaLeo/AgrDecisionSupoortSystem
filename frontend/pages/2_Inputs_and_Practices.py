@@ -22,7 +22,7 @@ from frontend.components.styles import (
 )
 
 st.set_page_config(
-    page_title=f"Inputs & Practices • {APP_TITLE}",
+    page_title=f"Inputs & Practices - {APP_TITLE}",
     page_icon=APP_ICON,
     layout="wide",
 )
@@ -40,19 +40,20 @@ render_sidebar_header(api_online=api_online)
 render_hero(
     title="Agronomic Inputs & Sustainable Practices",
     subtitle="Empirical impact assessment of mineral fertilizers, irrigation infrastructure, erosion control, and certified seeds across Rwandan farmland.",
-    badge="Impact Evaluation • NISR SAS 2025 Analytics",
+    badge="Impact Evaluation - NISR SAS 2025 Analytics",
+    icon_name="science",
 )
 
-# Top KPI row
+# Top KPI row with vector icons
 k1, k2, k3, k4 = st.columns(4)
 with k1:
-    st.markdown(render_kpi("Fertilizer Yield Lift", "+42.5%", " Yield Uplift", "NPK / Urea vs None", icon="🧪"), unsafe_allow_html=True)
+    st.markdown(render_kpi("Fertilizer Yield Lift", "+42.5%", " Yield Uplift", "NPK / Urea vs None", material_icon="science"), unsafe_allow_html=True)
 with k2:
-    st.markdown(render_kpi("Irrigation Gain", "+38.0%", " Yield Uplift", "Watered vs Rainfed", icon="💧"), unsafe_allow_html=True)
+    st.markdown(render_kpi("Irrigation Gain", "+38.0%", " Yield Uplift", "Watered vs Rainfed", material_icon="water_drop"), unsafe_allow_html=True)
 with k3:
-    st.markdown(render_kpi("Certified Seeds", "+28.4%", " Yield Uplift", "Hybrid vs Farm Saved", icon="🌱"), unsafe_allow_html=True)
+    st.markdown(render_kpi("Certified Seeds", "+28.4%", " Yield Uplift", "Hybrid vs Farm Saved", material_icon="eco"), unsafe_allow_html=True)
 with k4:
-    st.markdown(render_kpi("Terrace Conservation", "+18.2%", " Soil Preservation", "Hillside Protection", icon="🛡️"), unsafe_allow_html=True)
+    st.markdown(render_kpi("Terrace Conservation", "+18.2%", " Soil Preservation", "Hillside Protection", material_icon="shield"), unsafe_allow_html=True)
 
 st.markdown("<div style='height: 1.2rem;'></div>", unsafe_allow_html=True)
 
@@ -63,7 +64,10 @@ with c1:
     st.markdown(
         """
         <div class="content-card">
-            <div class="card-title">📈 Relative Yield Uplift by Technology Package</div>
+            <div class="card-title">
+                <span class="material-symbols-outlined" style="color: #059669;">analytics</span>
+                Relative Yield Uplift by Technology Package
+            </div>
             <div class="card-subtitle">Regression coefficients derived from 2025 Seasonal Agricultural Survey plots.</div>
         </div>
         """,
@@ -111,7 +115,10 @@ with c2:
     st.markdown(
         """
         <div class="content-card">
-            <div class="card-title">🧮 Interactive Practice Uplift Simulator</div>
+            <div class="card-title">
+                <span class="material-symbols-outlined" style="color: #059669;">calculate</span>
+                Interactive Practice Uplift Simulator
+            </div>
             <div class="card-subtitle">Select a baseline yield and toggle practices to simulate compound yield increases.</div>
         </div>
         """,
@@ -147,7 +154,7 @@ with c2:
         <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 14px; padding: 1.2rem; margin-top: 1rem; text-align: center;">
             <div style="font-size: 0.85rem; color: #065f46; font-weight: 600; text-transform: uppercase;">Simulated Optimized Yield</div>
             <div style="font-family: 'Outfit'; font-size: 2.6rem; font-weight: 800; color: #064e3b; margin: 0.2rem 0;">{sim_yield} <span style="font-size: 1.2rem;">t/ha</span></div>
-            <div style="color: #059669; font-weight: 700; font-size: 0.95rem;">▲ +{gain_pct}% overall yield increase over unmanaged plot</div>
+            <div style="color: #059669; font-weight: 700; font-size: 0.95rem;">+{gain_pct}% overall yield increase over unmanaged plot</div>
         </div>
         """,
         unsafe_allow_html=True,

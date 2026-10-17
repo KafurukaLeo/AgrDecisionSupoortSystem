@@ -21,13 +21,13 @@ from frontend.components.styles import (
 from frontend.components.charts import bar_chart
 
 st.set_page_config(
-    page_title=f"{APP_TITLE} • National Portal",
+    page_title=f"{APP_TITLE} - National Portal",
     page_icon=APP_ICON,
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# Apply unified design system
+# Apply unified design system with Material Symbols
 apply_custom_styles()
 
 # Sidebar: Check backend health
@@ -50,18 +50,19 @@ with st.sidebar:
         - **Dataset**: NISR SAS 2025 (Seasons A, B, C)
         - **Coverage**: All 30 Districts of Rwanda
         - **Active Model**: Random Forest Regressor
-        - **Model Precision**: R² = 0.847 (84.7% Variance)
+        - **Model Precision**: R2 = 0.847 (84.7% Variance)
         - **Target Metric**: Crop Yield (t/ha & kg/ha)
         """
     )
     st.markdown("---")
-    st.caption("Developed for Rwandan Agricultural Modernization & Evidence-Based Policymaking.")
+    st.caption("Developed for Rwandan Agricultural Modernization and Evidence-Based Policymaking.")
 
-# Main Page Hero
+# Main Page Hero with vector icon
 render_hero(
-    title="AI Agricultural Decision Support Platform",
+    title="Agricultural Decision Support Platform",
     subtitle="Predictive intelligence, yield forecasting, and agronomic input optimization powered by National Institute of Statistics of Rwanda (NISR) SAS 2025 data.",
-    badge="Republic of Rwanda • MINAGRI / NISR SAS 2025 Intelligence",
+    badge="Republic of Rwanda - MINAGRI / NISR SAS 2025 Intelligence",
+    icon_name="agriculture",
 )
 
 # Fetch data or display resilient fallbacks
@@ -75,27 +76,27 @@ except Exception:
     prod_tons = "1,250,000"
     area_ha = "438,000"
 
-# Executive KPI Grid
+# Executive KPI Grid with real vector icons
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.markdown(
-        render_kpi("Average National Yield", avg_yield, " t/ha", "▲ +8.4% vs 2024 Season", icon="🌾", is_up=True),
+        render_kpi("National Average Yield", avg_yield, " t/ha", "+8.4% vs 2024 Season", material_icon="agriculture", is_up=True),
         unsafe_allow_html=True,
     )
 with col2:
     st.markdown(
-        render_kpi("Total Harvest Output", prod_tons, " t", "▲ +12.1% Year-on-Year", icon="📦", is_up=True),
+        render_kpi("Total Harvest Output", prod_tons, " t", "+12.1% Year-on-Year", material_icon="inventory_2", is_up=True),
         unsafe_allow_html=True,
     )
 with col3:
     st.markdown(
-        render_kpi("Monitored Farmland", area_ha, " ha", "30 Districts Surveyed", icon="🗺️", is_up=True),
+        render_kpi("Monitored Farmland", area_ha, " ha", "30 Districts Surveyed", material_icon="map", is_up=True),
         unsafe_allow_html=True,
     )
 with col4:
     st.markdown(
-        render_kpi("AI Model Confidence", "84.7%", " R²", "Certified SAS 2025 Test Split", icon="🧠", is_up=True),
+        render_kpi("Model Confidence", "84.7%", " R2", "Certified SAS 2025 Test Split", material_icon="verified", is_up=True),
         unsafe_allow_html=True,
     )
 
@@ -108,11 +109,16 @@ with left_col:
     st.markdown(
         """
         <div class="content-card">
-            <div class="card-title">🌱 Decision Support Capabilities</div>
-            <div class="card-subtitle">Engineered to support farmers, agronomists, coops, and policymakers across Rwanda.</div>
+            <div class="card-title">
+                <span class="material-symbols-outlined" style="color: #059669;">eco</span>
+                Decision Support Capabilities
+            </div>
+            <div class="card-subtitle">Engineered to support farmers, agronomists, cooperatives, and policymakers across Rwanda.</div>
             <div style="display: grid; gap: 1rem;">
                 <div style="display: flex; gap: 0.9rem; align-items: flex-start;">
-                    <div style="background: #ecfdf5; padding: 0.6rem; border-radius: 10px; color: #059669; font-size: 1.3rem;">🔮</div>
+                    <div style="background: #ecfdf5; padding: 0.6rem; border-radius: 10px; color: #059669; display: flex; align-items: center; justify-content: center;">
+                        <span class="material-symbols-outlined">insights</span>
+                    </div>
                     <div>
                         <strong style="color: #0f172a; font-size: 0.98rem;">Predictive Scenario Simulator</strong>
                         <p style="margin: 0.2rem 0 0 0; color: #64748b; font-size: 0.88rem; line-height: 1.45;">
@@ -121,7 +127,9 @@ with left_col:
                     </div>
                 </div>
                 <div style="display: flex; gap: 0.9rem; align-items: flex-start;">
-                    <div style="background: #eff6ff; padding: 0.6rem; border-radius: 10px; color: #2563eb; font-size: 1.3rem;">📊</div>
+                    <div style="background: #eff6ff; padding: 0.6rem; border-radius: 10px; color: #2563eb; display: flex; align-items: center; justify-content: center;">
+                        <span class="material-symbols-outlined">analytics</span>
+                    </div>
                     <div>
                         <strong style="color: #0f172a; font-size: 0.98rem;">Evidence-Based Productivity Dashboards</strong>
                         <p style="margin: 0.2rem 0 0 0; color: #64748b; font-size: 0.88rem; line-height: 1.45;">
@@ -130,9 +138,11 @@ with left_col:
                     </div>
                 </div>
                 <div style="display: flex; gap: 0.9rem; align-items: flex-start;">
-                    <div style="background: #fef3c7; padding: 0.6rem; border-radius: 10px; color: #d97706; font-size: 1.3rem;">⚡</div>
+                    <div style="background: #fef3c7; padding: 0.6rem; border-radius: 10px; color: #d97706; display: flex; align-items: center; justify-content: center;">
+                        <span class="material-symbols-outlined">model_training</span>
+                    </div>
                     <div>
-                        <strong style="color: #0f172a; font-size: 0.98rem;">High-Accuracy Machine Learning Pipeline</strong>
+                        <strong style="color: #0f172a; font-size: 0.98rem;">Machine Learning Inference Pipeline</strong>
                         <p style="margin: 0.2rem 0 0 0; color: #64748b; font-size: 0.88rem; line-height: 1.45;">
                             Trained on verified micro-data from the National Institute of Statistics Rwanda (NISR), reaching 84.7% validation variance explanation.
                         </p>
@@ -148,7 +158,10 @@ with right_col:
     st.markdown(
         """
         <div class="content-card">
-            <div class="card-title">📈 Benchmark Yields by Staple Crop</div>
+            <div class="card-title">
+                <span class="material-symbols-outlined" style="color: #059669;">bar_chart</span>
+                Benchmark Yields by Staple Crop
+            </div>
             <div class="card-subtitle">Current national average productivity from NISR SAS benchmark indicators.</div>
         </div>
         """,
@@ -182,12 +195,12 @@ st.markdown(
     <div style="background: #ffffff; border-radius: 16px; padding: 1.2rem 1.6rem; border: 1px solid #e2e8f0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
         <div style="display: flex; align-items: center; gap: 0.8rem;">
             <div style="width: 10px; height: 10px; border-radius: 50%; background: #10b981;"></div>
-            <span style="font-size: 0.9rem; font-weight: 600; color: #334155;">System Status: Full Production Ready</span>
+            <span style="font-size: 0.9rem; font-weight: 600; color: #334155;">System Status: Operational</span>
             <span style="color: #94a3b8;">|</span>
-            <span style="font-size: 0.86rem; color: #64748b;">FastAPI Backend 0.143 • Streamlit 1.66 • Scikit-Learn 1.9.1</span>
+            <span style="font-size: 0.86rem; color: #64748b;">FastAPI Backend 0.143 - Streamlit 1.66 - Scikit-Learn 1.9.1</span>
         </div>
         <div>
-            <span style="font-size: 0.85rem; font-weight: 500; color: #059669;">Navigate via the sidebar pages 👈</span>
+            <span style="font-size: 0.85rem; font-weight: 500; color: #059669;">Select pages from the left navigation</span>
         </div>
     </div>
     """,

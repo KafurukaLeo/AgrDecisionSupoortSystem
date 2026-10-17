@@ -1,5 +1,5 @@
 """
-Overview Dashboard — National Agricultural Productivity Intelligence.
+Overview Dashboard - National Agricultural Productivity Intelligence.
 Provides regional comparisons, crop performance metrics, and seasonal distributions.
 """
 import sys
@@ -22,7 +22,7 @@ from frontend.components.styles import (
 from frontend.components.charts import bar_chart, regional_comparison_chart
 
 st.set_page_config(
-    page_title=f"Overview Dashboard • {APP_TITLE}",
+    page_title=f"Overview Dashboard - {APP_TITLE}",
     page_icon=APP_ICON,
     layout="wide",
 )
@@ -41,7 +41,8 @@ render_sidebar_header(api_online=api_online)
 render_hero(
     title="Overview Dashboard & National Analytics",
     subtitle="Macro productivity indicators, regional yield variations, and staple crop performance across Rwanda.",
-    badge="National Survey Benchmarks • NISR SAS 2025",
+    badge="National Survey Benchmarks - NISR SAS 2025",
+    icon_name="dashboard",
 )
 
 # Fetch backend data
@@ -59,8 +60,9 @@ except Exception:
 with st.container():
     st.markdown(
         """
-        <div style="background: #ffffff; border-radius: 14px; padding: 1.1rem 1.4rem; border: 1px solid #e2e8f0; margin-bottom: 1.6rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-            <span style="font-weight: 700; color: #0f172a; font-size: 0.95rem;">🔍 Analytics Scope & Scenario Filters</span>
+        <div style="background: #ffffff; border-radius: 14px; padding: 1.1rem 1.4rem; border: 1px solid #e2e8f0; margin-bottom: 1.6rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); display: flex; align-items: center; gap: 0.5rem;">
+            <span class="material-symbols-outlined" style="color: #059669;">tune</span>
+            <span style="font-weight: 700; color: #0f172a; font-size: 0.95rem;">Analytics Scope & Scenario Filters</span>
         </div>
         """,
         unsafe_allow_html=True,
@@ -73,16 +75,16 @@ with st.container():
     with fcol3:
         yield_metric = st.selectbox("Yield Measure", ["Metric Tons per Hectare (t/ha)", "Kilograms per Hectare (kg/ha)"])
 
-# KPI Cards
+# KPI Cards with vector icons
 kpi1, kpi2, kpi3, kpi4 = st.columns(4)
 with kpi1:
-    st.markdown(render_kpi("National Average Yield", avg_yield, " t/ha", "▲ Target: 3.5 t/ha", icon="🌾"), unsafe_allow_html=True)
+    st.markdown(render_kpi("National Average Yield", avg_yield, " t/ha", "Target: 3.5 t/ha", material_icon="agriculture"), unsafe_allow_html=True)
 with kpi2:
-    st.markdown(render_kpi("Aggregated Production", prod_tons, " t", "▲ +12% YoY", icon="📈"), unsafe_allow_html=True)
+    st.markdown(render_kpi("Aggregated Production", prod_tons, " t", "+12% YoY", material_icon="trending_up"), unsafe_allow_html=True)
 with kpi3:
-    st.markdown(render_kpi("Total Farmland", area_ha, " ha", "Active Plots Surveyed", icon="🚜"), unsafe_allow_html=True)
+    st.markdown(render_kpi("Total Farmland", area_ha, " ha", "Active Plots Surveyed", material_icon="landscape"), unsafe_allow_html=True)
 with kpi4:
-    st.markdown(render_kpi("Yield Efficiency Index", "76.4", " /100", "Regional Benchmark", icon="⚡"), unsafe_allow_html=True)
+    st.markdown(render_kpi("Yield Efficiency Index", "76.4", " /100", "Regional Benchmark", material_icon="speed"), unsafe_allow_html=True)
 
 st.markdown("<div style='height: 1.2rem;'></div>", unsafe_allow_html=True)
 
@@ -93,7 +95,10 @@ with chart_col1:
     st.markdown(
         """
         <div class="content-card">
-            <div class="card-title">🌾 Crop Productivity Ranking</div>
+            <div class="card-title">
+                <span class="material-symbols-outlined" style="color: #059669;">bar_chart</span>
+                Crop Productivity Ranking
+            </div>
             <div class="card-subtitle">Comparing staple crops against national food security productivity thresholds.</div>
         </div>
         """,
@@ -118,7 +123,10 @@ with chart_col2:
     st.markdown(
         """
         <div class="content-card">
-            <div class="card-title">🗺️ Provincial Yield Distribution</div>
+            <div class="card-title">
+                <span class="material-symbols-outlined" style="color: #059669;">map</span>
+                Provincial Yield Distribution
+            </div>
             <div class="card-subtitle">Agricultural performance aggregated across Rwanda's five administrative provinces.</div>
         </div>
         """,
@@ -138,7 +146,10 @@ with chart_col2:
 st.markdown(
     """
     <div class="content-card" style="margin-top: 1.5rem;">
-        <div class="card-title">📋 District High-Productivity Highlights</div>
+        <div class="card-title">
+            <span class="material-symbols-outlined" style="color: #059669;">table_chart</span>
+            District High-Productivity Highlights
+        </div>
         <div class="card-subtitle">Top agricultural zones with notable productivity drivers from NISR SAS data.</div>
     </div>
     """,

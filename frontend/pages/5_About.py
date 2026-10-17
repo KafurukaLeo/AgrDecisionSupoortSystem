@@ -1,5 +1,5 @@
 """
-About & System Methodology — AI Agri Decision Support Rwanda.
+About & System Methodology - AI Agri Decision Support Rwanda.
 Data provenance, system architecture, and institutional alignment.
 """
 import sys
@@ -19,7 +19,7 @@ from frontend.components.styles import (
 )
 
 st.set_page_config(
-    page_title=f"About & Architecture • {APP_TITLE}",
+    page_title=f"About & Architecture - {APP_TITLE}",
     page_icon=APP_ICON,
     layout="wide",
 )
@@ -37,7 +37,8 @@ render_sidebar_header(api_online=api_online)
 render_hero(
     title="System Architecture & Data Methodology",
     subtitle="Institutional alignment, NISR SAS data provenance, and technical architecture of the Rwanda Agricultural Decision Support System.",
-    badge="Documentation & Provenance • Republic of Rwanda",
+    badge="Documentation and Provenance - Republic of Rwanda",
+    icon_name="info",
 )
 
 col1, col2 = st.columns([1.1, 1], gap="medium")
@@ -46,7 +47,10 @@ with col1:
     st.markdown(
         """
         <div class="content-card">
-            <div class="card-title">🎯 Vision & Strategic Alignment</div>
+            <div class="card-title">
+                <span class="material-symbols-outlined" style="color: #059669;">flag</span>
+                Vision & Strategic Alignment
+            </div>
             <div class="card-subtitle">Supporting Rwanda's Strategic Plan for Agriculture Transformation (PSTA 4).</div>
             <p style="color: #334155; line-height: 1.6; font-size: 0.95rem;">
                 Rwanda's agriculture sector accounts for over 25% of national GDP and employs majority of the workforce. 
@@ -66,7 +70,10 @@ with col1:
     st.markdown(
         """
         <div class="content-card">
-            <div class="card-title">📚 Data Provenance (NISR SAS 2025)</div>
+            <div class="card-title">
+                <span class="material-symbols-outlined" style="color: #059669;">menu_book</span>
+                Data Provenance (NISR SAS 2025)
+            </div>
             <div class="card-subtitle">Official statistical survey micro-data collection methodology.</div>
             <p style="color: #334155; line-height: 1.6; font-size: 0.92rem;">
                 The underlying intelligence is trained on micro-data collected during the <strong>2025 Seasonal Agricultural Survey (SAS)</strong> 
@@ -86,19 +93,22 @@ with col2:
     st.markdown(
         """
         <div class="content-card">
-            <div class="card-title">🏗️ Enterprise Technology Architecture</div>
+            <div class="card-title">
+                <span class="material-symbols-outlined" style="color: #059669;">account_tree</span>
+                Enterprise Technology Architecture
+            </div>
             <div class="card-subtitle">High-performance, decoupled microservice design.</div>
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.2rem; font-size: 0.88rem; font-family: monospace; line-height: 1.6; color: #0f172a;">
                 <strong style="color: #059669;">[Client Presentation Tier]</strong><br>
-                Streamlit 1.66 • Plotly Data Visuals • Responsive Glassmorphism<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;│<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;▼ (High-Speed HTTP REST JSON)<br>
+                Streamlit 1.66 - Plotly Data Visuals - Responsive Glassmorphism<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;v (High-Speed HTTP REST JSON)<br>
                 <strong style="color: #0284c7;">[Backend API Gateway Tier]</strong><br>
-                FastAPI 0.143 • Uvicorn ASGI • Pydantic Schema Validation<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;│<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+                FastAPI 0.143 - Uvicorn ASGI - Pydantic Schema Validation<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;v<br>
                 <strong style="color: #d97706;">[Inference & ML Pipeline Tier]</strong><br>
-                Scikit-Learn 1.9.1 • Random Forest Champion • Preprocessor & Encoders
+                Scikit-Learn 1.9.1 - Random Forest Champion - Preprocessor & Encoders
             </div>
         </div>
         """,
@@ -108,7 +118,10 @@ with col2:
     st.markdown(
         """
         <div class="content-card">
-            <div class="card-title">🛡️ Quality & Validation Standards</div>
+            <div class="card-title">
+                <span class="material-symbols-outlined" style="color: #059669;">verified_user</span>
+                Quality & Validation Standards
+            </div>
             <div class="card-subtitle">Ensuring scientific integrity and reliability.</div>
             <ul style="color: #475569; line-height: 1.6; font-size: 0.92rem;">
                 <li><strong>Log-transform Target Optimization:</strong> Mitigates extreme outliers and right-skewed yield distributions.</li>

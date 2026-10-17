@@ -24,7 +24,7 @@ from frontend.components.styles import (
 from frontend.components.charts import model_comparison_chart
 
 st.set_page_config(
-    page_title=f"Model Performance • {APP_TITLE}",
+    page_title=f"Model Performance - {APP_TITLE}",
     page_icon=APP_ICON,
     layout="wide",
 )
@@ -41,8 +41,9 @@ render_sidebar_header(api_online=api_online)
 
 render_hero(
     title="Machine Learning Performance & Model Registry",
-    subtitle="Rigorous cross-validation benchmarks, error metrics (MAE, RMSE, R²), and feature attribution for the NISR SAS 2025 predictive pipeline.",
-    badge="MLOps & Algorithm Benchmarks • NISR SAS 2025",
+    subtitle="Rigorous cross-validation benchmarks, error metrics (MAE, RMSE, R2), and feature attribution for the NISR SAS 2025 predictive pipeline.",
+    badge="MLOps and Algorithm Benchmarks - NISR SAS 2025",
+    icon_name="model_training",
 )
 
 # Load real metrics from ml/artifacts/metrics/model_metrics.json
@@ -67,13 +68,13 @@ rf_metrics = next((m for m in metrics_data if m["model"] == "random_forest"), me
 
 k1, k2, k3, k4 = st.columns(4)
 with k1:
-    st.markdown(render_kpi("Champion Model", "Random Forest", "", "100 Estimators, Depth 15", icon="🏆"), unsafe_allow_html=True)
+    st.markdown(render_kpi("Champion Model", "Random Forest", "", "100 Trees, Depth 15", material_icon="workspace_premium"), unsafe_allow_html=True)
 with k2:
-    st.markdown(render_kpi("R² Accuracy Score", f"{rf_metrics['r2'] * 100:.1f}%", "", "84.7% Variance Explained", icon="🎯"), unsafe_allow_html=True)
+    st.markdown(render_kpi("R2 Accuracy Score", f"{rf_metrics['r2'] * 100:.1f}%", "", "84.7% Variance Explained", material_icon="verified"), unsafe_allow_html=True)
 with k3:
-    st.markdown(render_kpi("Mean Absolute Error", f"{rf_metrics['mae']:.0f}", " kg/ha", "1.27 t/ha average error", icon="📉"), unsafe_allow_html=True)
+    st.markdown(render_kpi("Mean Absolute Error", f"{rf_metrics['mae']:.0f}", " kg/ha", "1.27 t/ha average error", material_icon="trending_down"), unsafe_allow_html=True)
 with k4:
-    st.markdown(render_kpi("Inference Latency", "< 15", " ms", "Production REST API", icon="⚡"), unsafe_allow_html=True)
+    st.markdown(render_kpi("Inference Latency", "< 15", " ms", "Production REST API", material_icon="timer"), unsafe_allow_html=True)
 
 st.markdown("<div style='height: 1.2rem;'></div>", unsafe_allow_html=True)
 
@@ -84,7 +85,10 @@ with col1:
     st.markdown(
         """
         <div class="content-card">
-            <div class="card-title">📊 Multi-Model Performance Comparison</div>
+            <div class="card-title">
+                <span class="material-symbols-outlined" style="color: #059669;">stacked_bar_chart</span>
+                Multi-Model Performance Comparison
+            </div>
             <div class="card-subtitle">Evaluated on a strict 20% holdout test set from NISR SAS micro-data.</div>
         </div>
         """,
@@ -97,7 +101,10 @@ with col2:
     st.markdown(
         """
         <div class="content-card">
-            <div class="card-title">🔬 Feature Importance Breakdown</div>
+            <div class="card-title">
+                <span class="material-symbols-outlined" style="color: #059669;">tune</span>
+                Feature Importance Breakdown
+            </div>
             <div class="card-subtitle">Key variables driving model predictions based on Gini importance.</div>
         </div>
         """,
@@ -111,7 +118,7 @@ with col2:
         {"Feature": "Topography / Land Stratum", "Importance": 0.11},
         {"Feature": "Supplementary Irrigation", "Importance": 0.08},
         {"Feature": "Certified Hybrid Seeds", "Importance": 0.06},
-        {"Feature": "Farmer Experience & Age", "Importance": 0.05},
+        {"Feature": "Farmer Experience and Age", "Importance": 0.05},
     ])
     
     fig_fi = px.bar(
@@ -140,7 +147,10 @@ with col2:
 st.markdown(
     """
     <div class="content-card">
-        <div class="card-title">⚙️ Detailed Validation Metrics by Architecture</div>
+        <div class="card-title">
+            <span class="material-symbols-outlined" style="color: #059669;">settings</span>
+            Detailed Validation Metrics by Architecture
+        </div>
         <div class="card-subtitle">Complete benchmark metrics recorded during model training.</div>
     </div>
     """,
@@ -150,7 +160,7 @@ st.markdown(
 metrics_table = pd.DataFrame([
     {
         "Algorithm": m["model"].replace("_", " ").title(),
-        "R² Score": f"{m['r2']:.4f}",
+        "R2 Score": f"{m['r2']:.4f}",
         "MAE (kg/ha)": f"{m['mae']:,.1f}",
         "RMSE (kg/ha)": f"{m['rmse']:,.1f}",
         "Training Time (s)": f"{m.get('train_time_sec', 0.0):.2f}s",
