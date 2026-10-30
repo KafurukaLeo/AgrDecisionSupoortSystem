@@ -1,55 +1,20 @@
-"""
-Main Streamlit entry point.
-"""
+"""Streamlit entry point with friendly names for every page."""
 import streamlit as st
-from frontend.config.settings import APP_TITLE, APP_ICON
-from frontend.services.api_client import api_client
 
-st.set_page_config(
-    page_title=APP_TITLE,
-    page_icon=APP_ICON,
-    layout="wide",
-    initial_sidebar_state="expanded",
-)
 
-st.title(f"{APP_ICON} {APP_TITLE}")
-st.caption("AI-Powered Agricultural Productivity Decision Support System for Rwanda")
+pages = [
+    st.Page("Home.py", title="Home", default=True),
+    st.Page("pages/1_Overview.py", title="Overview"),
+    st.Page(
+        "pages/2_Prediction_Tool.py",
+        title="Estimate harvest",
+        url_path="Prediction_Tool",
+    ),
+    st.Page(
+        "pages/3_Model_Performance.py",
+        title="Model checks",
+        url_path="Model_Performance",
+    ),
+]
 
-st.markdown("---")
-
-# Backend health check
-with st.sidebar:
-    st.header("System Status")
-    try:
-        health = api_client.health()
-        st.success(f"Backend: {health['status']}")
-    except Exception as e:
-        st.error(f"Backend unreachable: {e}")
-
-st.markdown(
-    """
-    ### Welcome
-
-    Use the sidebar to navigate through the dashboard:
-
-    - **Overview** — Key productivity indicators
-    - **Productivity Analysis** — Explore by crop, season, location
-    - **Geographic Comparison** — Compare districts
-    - **Inputs & Practices** — Fertilizer, irrigation, and practices
-    - **Prediction Tool** — Predict productivity for a scenario
-    - **Model Performance** — How accurate is the model?
-    - **About** — Data source and methodology
-    """
-)
-
-# Quick overview
-st.subheader("Quick Overview")
-try:
-    summary = api_client.get_summary()
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Average Yield", f"{summary['average_yield']} t/ha")
-    col2.metric("Total Production", f"{summary['total_production_tons']:,} t")
-    col3.metric("Cultivated Area", f"{summary['total_cultivated_hectares']:,} ha")
-    st.info(summary.get("note", ""))
-except Exception as e:
-    st.warning(f"Could not load summary: {e}")
+st.navigation(pages).run()

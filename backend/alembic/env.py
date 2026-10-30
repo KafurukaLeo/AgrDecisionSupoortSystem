@@ -25,7 +25,8 @@ config = context.config
 
 # Load DB URL from settings
 settings = get_settings()
-config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+# Escape '%' (from URL-encoded passwords) for configparser interpolation
+config.set_main_option("sqlalchemy.url", settings.DATABASE_URL.replace("%", "%%"))
 
 # Set up logging
 if config.config_file_name is not None:

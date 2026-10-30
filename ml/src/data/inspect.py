@@ -44,13 +44,13 @@ def inspect_file(filepath: Path, label: str):
     print("=" * 78)
 
     if not filepath.exists():
-        print(f"⚠️  FILE NOT FOUND\n")
+        print(f"WARNING: FILE NOT FOUND\n")
         return None
 
     try:
         df = pd.read_csv(filepath, sep="\t", low_memory=False)
     except Exception as e:
-        print(f"⚠️  Could not read file: {e}\n")
+        print(f"WARNING: Could not read file: {e}\n")
         return None
 
     print(f"Shape: {df.shape}")

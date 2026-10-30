@@ -1,0 +1,36 @@
+# Works on Python 3.10 - 3.15 (Windows, macOS, Linux).
+# Version ranges are used on purpose so pip picks builds that exist for
+# whichever Python version is installed on the machine.
+
+# Backend
+fastapi>=0.109
+uvicorn>=0.27
+websockets>=12.0
+httptools>=0.6
+watchfiles>=0.21
+pydantic>=2.5
+pydantic-settings>=2.1
+python-dotenv>=1.0
+sqlalchemy>=2.0.25
+psycopg2-binary>=2.9.9
+alembic>=1.13
+
+# Data processing
+pandas>=2.2
+numpy>=1.26
+
+# Machine learning
+scikit-learn>=1.4
+joblib>=1.3
+
+# Visualization
+matplotlib>=3.8
+plotly>=5.18
+
+# Frontend (Material icons need Streamlit 1.40+)
+streamlit>=1.40
+pyarrow>=14
+requests>=2.31
+
+# Utilities
+python-multipart>=0.0.6

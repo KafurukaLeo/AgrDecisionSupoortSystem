@@ -8,9 +8,13 @@ from backend.app.config import get_settings
 
 settings = get_settings()
 
+db_url = settings.DATABASE_URL
+if db_url.startswith("postgresql://") and not db_url.startswith("postgresql+"):
+    db_url = db_url.replace("postgresql://", "postgresql+psycopg2://", 1)
+
 # Create engine
 engine = create_engine(
-    settings.DATABASE_URL,
+    db_url,
     echo=settings.DEBUG,   # Log SQL in dev
     pool_pre_ping=True,    # Reconnect if connection drops
     future=True,
