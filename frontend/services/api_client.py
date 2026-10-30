@@ -35,6 +35,13 @@ class APIClient:
     def get_by_crop(self) -> Dict:
         return self._get("/productivity/by-crop")
 
+    def get_by_district(self, province: Optional[str] = None) -> Dict:
+        params = {"province": province} if province else None
+        return self._get("/productivity/by-district", params=params)
+
+    def get_inputs_impact(self) -> Dict:
+        return self._get("/productivity/inputs-impact")
+
     # Filters
     def get_filter_options(self) -> Dict:
         return self._get("/filters/options")

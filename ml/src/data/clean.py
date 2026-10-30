@@ -10,6 +10,22 @@ Usage:
 from pathlib import Path
 import pandas as pd
 
+from ml.src.data.codebooks import (
+    CROP_CODES,
+    DISTRICT_CODES,
+    EROSION_DEGREE_CODES,
+    FARMER_CATEGORY_CODES,
+    INORGANIC_FERTILIZER_TYPE_CODES,
+    IRRIGATION_SOURCE_CODES,
+    IRRIGATION_TECHNIQUE_CODES,
+    IRRIGATION_TOOL_CODES,
+    ORGANIC_FERTILIZER_TYPE_CODES,
+    PESTICIDE_TYPE_CODES,
+    PROVINCE_CODES,
+    SOURCE_OF_IMPROVED_SEEDS_CODES,
+    STRATUM_CODES,
+    decode,
+)
 from ml.src.data.load_utils import load_sas_csv, to_numeric_safe
 
 
@@ -203,6 +219,45 @@ def coerce_numeric(df):
     return df
 
 
+def decode_coded_columns(df):
+    """Convert raw NISR numeric codes into human-readable labels where possible."""
+    codebook_map = {
+        "province": PROVINCE_CODES,
+        "district": DISTRICT_CODES,
+        "stratum": STRATUM_CODES,
+        "farmer_category": FARMER_CATEGORY_CODES,
+        "farmer_type": FARMER_CATEGORY_CODES,
+        "crop": CROP_CODES,
+        "crop_category": {
+            "Cereal": "Cereal",
+            "Legume": "Legume",
+            "Tuber": "Tuber",
+            "Vegetable": "Vegetable",
+            "Fruit": "Fruit",
+            "Annual": "Annual",
+            "Perennial": "Perennial",
+            "Fodder": "Fodder",
+        },
+        "erosion_degree": EROSION_DEGREE_CODES,
+        "irrigation_technique": IRRIGATION_TECHNIQUE_CODES,
+        "irrigation_source": IRRIGATION_SOURCE_CODES,
+        "irrigation_tool": IRRIGATION_TOOL_CODES,
+        "organic_fertilizer_type_1": ORGANIC_FERTILIZER_TYPE_CODES,
+        "organic_fertilizer_type_2": ORGANIC_FERTILIZER_TYPE_CODES,
+        "inorganic_fertilizer_type_1": INORGANIC_FERTILIZER_TYPE_CODES,
+        "inorganic_fertilizer_type_2": INORGANIC_FERTILIZER_TYPE_CODES,
+        "pesticide_type_1": PESTICIDE_TYPE_CODES,
+        "seed_source": SOURCE_OF_IMPROVED_SEEDS_CODES,
+    }
+
+    for col, codebook in codebook_map.items():
+        if col not in df.columns:
+            continue
+        df[col] = df[col].map(lambda value: decode(value, codebook) if not pd.isna(value) and str(value).strip() != "" else value)
+
+    return df
+
+
 # -----------------------------------------------------------------------------
 # Main cleaning function
 # -----------------------------------------------------------------------------
@@ -221,6 +276,9 @@ def clean_file(path, rename_map, label):
 
     # Coerce numerics
     df = coerce_numeric(df)
+
+    # Decode raw code columns to human-readable labels where the mapping exists
+    df = decode_coded_columns(df)
 
     print(f"    → {df.shape[0]} rows × {df.shape[1]} cols after cleaning")
     return df

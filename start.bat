@@ -15,15 +15,19 @@ if defined NEEDS_SETUP (
   if not exist "venv\Scripts\python.exe" exit /b 1
 )
 
-echo Starting backend  (http://127.0.0.1:8000) ...
-start "Backend - FastAPI" cmd /k ""venv\Scripts\python.exe" -m uvicorn backend.app.main:app --port 8000"
+if not defined BACKEND_PORT set "BACKEND_PORT=8000"
+if not defined STREAMLIT_PORT set "STREAMLIT_PORT=8501"
+if not defined FRONTEND_API_URL set "FRONTEND_API_URL=http://127.0.0.1:%BACKEND_PORT%"
 
-echo Starting frontend (http://localhost:8501) ...
-start "Frontend - Streamlit" cmd /k ""venv\Scripts\python.exe" run_frontend.py"
+echo Starting backend  (http://127.0.0.1:%BACKEND_PORT%) ...
+start "Backend - FastAPI" cmd /k ""venv\Scripts\python.exe" -m uvicorn backend.app.main:app --host 127.0.0.1 --port %BACKEND_PORT%"
+
+echo Starting frontend (http://localhost:%STREAMLIT_PORT%) ...
+start "Frontend - Streamlit" cmd /k "set FRONTEND_API_URL=%FRONTEND_API_URL% && set STREAMLIT_PORT=%STREAMLIT_PORT% && ""venv\Scripts\python.exe" run_frontend.py"
 
 echo Waiting for the servers to start...
 timeout /t 8 /nobreak >nul
-start "" http://localhost:8501
+start "" http://localhost:%STREAMLIT_PORT%
 
 echo.
 echo Two windows were opened (Backend and Frontend). Close them to stop the app.

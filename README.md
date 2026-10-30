@@ -19,6 +19,7 @@ An AI-powered system that analyzes NISR agricultural data and predicts agricultu
 3. Double-click `start.bat` (starts backend + frontend and opens http://localhost:8501)
 
 - Backend API docs: http://127.0.0.1:8000/docs
+- Set `BACKEND_PORT` and `STREAMLIT_PORT` before running if 8000/8501 are already in use.
 - `start.bat` runs `setup.bat` automatically on a new computer, so step 2 is optional.
 - Do not copy the `venv/` folder between computers; `setup.bat` rebuilds it.
 
@@ -27,7 +28,7 @@ The trained model files are not stored in Git. Copy them to:
 - `backend/app/ml/artifacts/model.pkl`  (the Random Forest, e.g. `best_model_random_forest.pkl`)
 - `backend/app/ml/artifacts/label_encoders.pkl`
 
-Until then, the Prediction Tool shows a warning and the Predict button is disabled.
+If these files are not available, the tool provides a clearly labeled estimate based on survey benchmarks instead of a trained-model prediction.
 
 ## Manual Setup (any OS)
 1. Clone the repository
